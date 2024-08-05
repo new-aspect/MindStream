@@ -76,5 +76,5 @@ CREATE TABLE `queries` (
 
 ### 导入sqlite3
 ```go
-sqlite3 memos.db < sqlite3.sql
+sqlite3 mindStream.db < sqlite3.sql
 ```

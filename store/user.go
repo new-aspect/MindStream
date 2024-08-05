@@ -13,7 +13,7 @@ type User struct {
 }
 
 func GetUserById(id string) (User, error) {
-	query := `SELECT id, username, password, wx_open_id, github_name, create_at, update_at FROM users WHERE id=?`
+	query := `SELECT id, username, password, wx_open_id, github_name, created_at, updated_at FROM users WHERE id=?`
 	var user User
 	err := DB.QueryRow(query, id).Scan(&user.Id, &user.Username, &user.Password, &user.WxOpenId, &user.GithubName, &user.CreatedAt, &user.UpdateAt)
 	return user, err

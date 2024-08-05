@@ -9,7 +9,7 @@ import (
 var DB *sql.DB
 
 func InitDBConn() {
-	db, err := sql.Open("sqlite3", "./resources/memos.db")
+	db, err := sql.Open("sqlite3", "./resources/mindStream.db")
 	if err != nil {
 		fmt.Println("connect failed")
 	} else {
