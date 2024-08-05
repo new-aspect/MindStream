@@ -2,7 +2,7 @@ package api
 
 import (
 	"net/http"
-	"new-aspect/practice-memos/common/errors"
+	"new-aspect/MindStream/common/errors"
 )
 
 func AuthCheckerMiddleWare(next http.Handler) http.Handler {

@@ -5,8 +5,8 @@ import (
 	"github.com/gorilla/mux"
 	"go.uber.org/zap"
 	"net/http"
-	"new-aspect/practice-memos/common/errors"
-	"new-aspect/practice-memos/store"
+	"new-aspect/MindStream/common/errors"
+	"new-aspect/MindStream/store"
 )
 
 func handleGetMyUserInfo(w http.ResponseWriter, r *http.Request) {

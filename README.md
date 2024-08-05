@@ -1,3 +1,3 @@
-# ✍️ Memos
+# ✍️ MindStream
 
 🏗 In heavily deployment.

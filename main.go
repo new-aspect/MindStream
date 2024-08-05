@@ -4,8 +4,8 @@ import (
 	"github.com/gorilla/mux"
 	"go.uber.org/zap"
 	"net/http"
-	"new-aspect/practice-memos/api"
-	"new-aspect/practice-memos/store"
+	"new-aspect/MindStream/api"
+	"new-aspect/MindStream/store"
 )
 
 func init() {

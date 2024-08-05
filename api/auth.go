@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"net/http"
-	"new-aspect/practice-memos/common/errors"
-	"new-aspect/practice-memos/store"
+	"new-aspect/MindStream/common/errors"
+	"new-aspect/MindStream/store"
 )
 
 type UserSignUp struct {

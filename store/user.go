@@ -1,6 +1,6 @@
 package store
 
-import "new-aspect/practice-memos/common"
+import "new-aspect/MindStream/common"
 
 type User struct {
 	Id         string `json:"id"`
