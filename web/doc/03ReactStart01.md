@@ -128,3 +128,66 @@ return (
 
 请注意<li>如何具有key属性，对于列表中的每个项目，您应该传递一个字符串或数字，以在其同级项目中唯一表示该项目，
 通常，秘钥应该来自您的数据，例如数据库的ID。React使用您的键来了解您的稍后插入、删除或重新排序项目时发生的情况
+
+### 响应事件
+您可以通过在组件内声明事件来处理函数响应事件
+
+```javascript
+function MyButton() {
+    function handleClick() {
+        alert('You clicked me!')
+    }
+
+    return (
+        <button onClick={handleClick}>
+            Click me
+        </button>
+    )
+}
+```
+
+请注意`onClick={handleClick}` 末尾没有括号! 不要调用事件处理函数，您只需要将其传递下去。当用户点击按钮的时候，React将调用你的事件处理函数
+
+### 更新屏幕
+
+通常，你会希望组件“记住”一些信息并显示它，例如，也许您想计算按钮被点击的次数。为此，请向您的组件添加状态
+
+首先，从React 导入 useState
+
+```javascript
+import {useState} from 'react';
+```
+
+现在，你可以在组件内声明一个状态变量
+
+```javascript
+function MyButton() {
+    const [count, setCount] = useState(0);
+}
+```
+
+你将从useState中获得两件事，当前状态（count）和允许您更新它的函数（setCount）。您可以给他们起任何名字，但是约定编写[something, setSomething]。
+
+第一次显示按钮的时候，count将为0，因为您将0传递给了useState()。当您想要改变状态的时候，请调用setCount()并将新值传递给它，单击次按钮将增加计数器
+
+```javascript
+function MyButton() {
+    const [count, setCount] = useState(0);
+
+    function handleClick() {
+        setCount(count + 1);
+    }
+
+    return (
+        <button onClick={handleClick}>
+            Clicked {count} times
+        </button>
+    );
+}
+```
+
+React将再次调用你的组件函数，这次，count将为1，那么它讲为2，等等。
+
+如果多次渲染一个组件，每个组件都会获得自己单独的状态，分别点击每个按钮。
+
+请记住每个按钮记住自己的count状态并不会影响其他按钮。
