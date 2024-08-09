@@ -99,4 +99,32 @@ return (
 
 上面的示例中，`style={{}}`并不是特殊语法，而是`style={}`JSX大括号内常规{}对象，这样您的样式依赖于JavaScript变量时，您可以使用style属性
 
+### 渲染列表
 
+您将依赖JavaScript功能，（例如for循环和数组map()函数来呈现组件列表）
+
+例如，假设您有一系列产品:
+
+```javascript
+const products = [
+    {title:'Cabbage',id:1},
+    {title:'Garlic',id:2},
+    {title:'Apple',id:3},
+];
+```
+
+在组件内部，使用map()将函数转换为<li>项目数组
+
+```javascript
+const listItems = products.map(product =>
+    <li key={product.id}>
+        {product.title}
+    </li>    
+ )
+return (
+    <ul>{listItems}</ul>
+)
+```
+
+请注意<li>如何具有key属性，对于列表中的每个项目，您应该传递一个字符串或数字，以在其同级项目中唯一表示该项目，
+通常，秘钥应该来自您的数据，例如数据库的ID。React使用您的键来了解您的稍后插入、删除或重新排序项目时发生的情况
