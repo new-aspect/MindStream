@@ -191,3 +191,63 @@ React将再次调用你的组件函数，这次，count将为1，那么它讲为
 如果多次渲染一个组件，每个组件都会获得自己单独的状态，分别点击每个按钮。
 
 请记住每个按钮记住自己的count状态并不会影响其他按钮。
+
+
+### 使用钩子(Using Hooks)
+以Use开头的函数统称为Hooks。 useState是React提供内置的Hook。您可以在[API参考中找到其他内置Hook](https://react.dev/reference/react)。
+您可以通过组合现有的Hook来编写自己的Hook.
+
+钩子相比其他函数更有限制性，您只能在组件顶部调用Hooks(或者其他Hook),如果您想在条件或循环中使用useState, 请提取一个新的组件并放在那里。
+
+### 组件之间共享数据
+
+在前面的示例中，每个MyButton都有自己独立的count，当点击每个按钮时，只有单击的按钮的count发生了变化
+
+然而，你需要组件共享数据并始终一起更新
+
+要使两个Button组件显示相同的count并一起更新，您需要将状态从各个按钮向上移动到所有按钮最近的组件。
+
+现在，当您点击任一按钮时，MyApp中的count发生变化，这将改变MyButton的两个计数，以下是如何用代码表示这一点。
+
+```javascript
+export default function MyApp(){
+    const [count, setCount]= useState(0);
+
+    function handleClick(){
+        setCount(count +1)
+    }
+
+    return (
+        <div>
+            <h1>Counters that update separately</h1>
+            <MyButton/>
+            <MyButton/>
+        </div>
+    )
+}
+
+function MyButton(){
+    // we're moving code from here
+}
+```
+
+然后将状态连同共享的单击处理程序一起从MyApp传递到每个MyButton。这样您可以通过JSX大括号将信息传递给MyButton,
+就像您之前使用的<img>内置标签一样
+
+```javascript
+function MyButton({count,onClick}){
+    return (
+        <button onClick={onClick}>
+            Clicked {count} times
+        </button>
+    )
+}
+```
+
+当您单击改按钮，将触发onClick处理程序。每个按钮的onClick属性都设置为MyApp内的handleClick函数，因此其中
+代码会运行，改代码调用`setCount(count + 1)`, 递增`count` 状态变量。新的`count` 数值作为属性传递给每个按钮，
+因此他们都显示新值。这成为提升状态，通过向上移动状态，您可以在组件间共享它。
+
+到底为止，您已经知道如何编写React代码的基础知识，
+
+查看[教程](https://react.dev/learn/tutorial-tic-tac-toe)将会带你辅助实现的做第一个应用
