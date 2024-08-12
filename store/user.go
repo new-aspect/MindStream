@@ -38,7 +38,7 @@ func CreateNewUser(username, password, githubName, wxOpenId string) (User, error
 }
 
 func GetUserByUsernameAndPassword(username, password string) (User, error) {
-	query := `SELECT id, username, password, wx_open_id, github_name,created_at, updated_at FROM user WHERE username=? AND password=?`
+	query := `SELECT id, username, password, wx_open_id, github_name,created_at, updated_at FROM users WHERE username=? AND password=?`
 	var user User
 	err := DB.QueryRow(query, username, password).Scan(&user.Id, &user.Username, &user.Password, &user.WxOpenId, &user.GithubName, &user.CreatedAt, &user.UpdatedAt)
 	return user, err
