@@ -24,6 +24,14 @@ func main() {
 
 	api.RegisterUserRoutes(r)
 	api.RegisterAuthRoutes(r)
+	api.RegisterQueryRoutes(r)
+	api.RegisterMemoRoutes(r)
+
+	spa := api.SPAHandler{
+		StaticPath: "./web/dist",
+		IndexPath:  "index.html",
+	}
+	r.PathPrefix("/").Handler(spa)
 
 	http.ListenAndServe("localhost:8080", r)
 }

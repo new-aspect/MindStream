@@ -1,7 +1,16 @@
-import Message from "./components/Message";
+// import { useContext } from "react";
+import Signin from "./pages/Signin";
+
+import { appRouterSwitch } from "./routers";
+// import Message from "./components/Message"
 
 function App() {
-    return <div><Message></Message></div>
+  // const {
+
+  // } = useContext
+  // return <Message/>
+  //   return <Signin />;
+  return <>{appRouterSwitch("/signin")}</>;
 }
 
 export default App;
