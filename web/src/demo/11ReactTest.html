@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+</body>
+<!-- This setup is not suitable for production. -->
+<!-- Only use it in development! -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react?dev",
+    "react-dom/client": "https://esm.sh/react-dom/client?dev"
+  }
+}
+</script>
+<script type="text/babel" data-type="module">
+import React, {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+
+
+let App = function() {
+    let count = 0
+
+    function clientHandle() {
+        count++
+    }
+
+    return (
+        <div>
+            <div> {count} </div>
+            <button onClick={clientHandle}>点击+1</button>
+        </div>    
+    
+    )
+}
+
+const root = createRoot(document.getElementById('root'))
+root.render(
+  <StrictMode>
+    <App/>
+  </StrictMode>
+)
+
+</script>
+</html>

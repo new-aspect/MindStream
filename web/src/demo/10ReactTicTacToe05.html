@@ -29,9 +29,11 @@ let App = function Board(){
     const[squares,setSquares] = useState(Array(9).fill('X'));
 
     const handleClick = (index) => {
-      const newSquares = squares.slice();
-      newSquares[index] = squares[index] === 'X' ? 'O' : 'X';
-      setSquares(newSquares);
+      // const newSquares = squares.slice();
+      // newSquares[index] = squares[index] === 'X' ? 'O' : 'X';
+      // setSquares(newSquares);
+      squares[index] = squares[index] === 'X' ? 'Y': 'X';
+      setSquares(squares)
     }
 
     return(
